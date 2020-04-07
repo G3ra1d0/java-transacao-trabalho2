@@ -5,6 +5,9 @@
  */
 package java.transacao.trabalho2;
 
+import Dao.FabricaConexao;
+import java.sql.Connection;
+
 /**
  *
  * @author g3ra1d0
@@ -16,6 +19,8 @@ public class JavaTransacaoTrabalho2 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Connection cnx = FabricaConexao.GeraConexaoCustomizada(1);
+        System.out.println("Oi");
     }
     
 }
