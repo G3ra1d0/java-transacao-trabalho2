@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package java.transacao.trabalho2;
+package tp.transacao.trabalho2;
 
 import Dao.FabricaConexao;
 import java.sql.Connection;
