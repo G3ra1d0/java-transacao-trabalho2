@@ -1,5 +1,5 @@
 
-package Dao;
+package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -17,8 +17,8 @@ public class FabricaConexao {
 
     private static final String STR_CON = "jdbc:mysql://" + IP + ":3306/" + DATABASE; // string de conexao com o banco de dados
 
-    private static final String USER = "root"; // Nome do usuário
-    private static final String PASSWORD = "geraldo"; // senha
+    private static final String USER = "mateus"; // Nome do usuário
+    private static final String PASSWORD = ""; // senha
 
     private static Connection objConexao = null;
 

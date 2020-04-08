@@ -5,7 +5,7 @@
  */
 package tp.transacao.trabalho2;
 
-import Dao.FabricaConexao;
+import dao.FabricaConexao;
 import java.sql.Connection;
 
 /**
