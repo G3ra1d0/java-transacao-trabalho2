@@ -14,12 +14,12 @@ public class TestePedidoDao {
         PedidoDao PedidoDao = new PedidoDao();
 
         //INSERCAO
-        /*Pedido.setData(new Date());
+        Pedido.setData(new Date());
         Pedido.setIdCliente(2);
         Pedido.setIdVendedor(1);
         Pedido.setObservacao("Um pedido mt legal");
 
-        PedidoDao.inserir(Pedido);*/
+        PedidoDao.inserir(Pedido);
 
         //UPDATE
         /*Optional<Pedido> PedidoOpt = PedidoDao.select(1);
@@ -31,10 +31,10 @@ public class TestePedidoDao {
         }*/
 
         //DELETE
-        Collection<Pedido> Pedidos = PedidoDao.selectAll();
+        /*Collection<Pedido> Pedidos = PedidoDao.selectAll();
         Pedidos.forEach(
             d -> PedidoDao.delete(d)
-        );
+        );*/
 
     }
 }
