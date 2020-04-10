@@ -28,7 +28,7 @@ public class Pedido {
         this.data = formatoData.format(data);
     }
 
-    public void setUltimaCompra(String data) {
+    public void setData(String data) {
         this.data = data;
     }
 
