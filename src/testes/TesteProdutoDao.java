@@ -14,11 +14,11 @@ public class TesteProdutoDao {
         ProdutoDao ProdutoDao = new ProdutoDao();
 
         //INSERCAO
-        /*Produto.setDescricao("Feijao");
+        Produto.setDescricao("Feijao");
         Produto.setSaldo(2.5);
         Produto.setUnidade("Kg");
 
-        ProdutoDao.inserir(Produto);*/
+        ProdutoDao.inserir(Produto);
 
         //UPDATE
         /*Optional<Produto> ProdutoOpt = ProdutoDao.select(2);
@@ -30,10 +30,10 @@ public class TesteProdutoDao {
         }*/
 
         //DELETE
-        Collection<Produto> Produtos = ProdutoDao.selectAll();
+        /*Collection<Produto> Produtos = ProdutoDao.selectAll();
         Produtos.forEach(
             p -> ProdutoDao.delete(p)
-        );
+        );*/
 
     }
 }
