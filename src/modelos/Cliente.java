@@ -39,8 +39,8 @@ public class Cliente {
     }
 
     public void setUltimaCompra(Date ultimaCompra) {
-        DateFormat dataFormato = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        this.ultimaCompra = dataFormato.format(ultimaCompra);
+        DateFormat formatoData = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        this.ultimaCompra = formatoData.format(ultimaCompra);
     }
 
     public void setUltimaCompra(String ultimaCompra) {
