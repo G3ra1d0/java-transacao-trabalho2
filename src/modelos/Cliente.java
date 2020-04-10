@@ -1,12 +1,14 @@
 package modelos;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Cliente {
     private int id;
     private String nome;
     private String cpf;
-    private Date ultimaCompra;
+    private String ultimaCompra;
 
     public int getId() {
         return id;
@@ -32,11 +34,16 @@ public class Cliente {
         this.cpf = cpf;
     }
 
-    public Date getUltimaCompra() {
+    public String getUltimaCompra() {
         return ultimaCompra;
     }
 
     public void setUltimaCompra(Date ultimaCompra) {
+        DateFormat dataFormato = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        this.ultimaCompra = dataFormato.format(ultimaCompra);
+    }
+
+    public void setUltimaCompra(String ultimaCompra) {
         this.ultimaCompra = ultimaCompra;
     }
 
