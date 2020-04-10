@@ -1,5 +1,7 @@
 package modelos;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ProdutoMovimento {
@@ -19,7 +21,7 @@ public class ProdutoMovimento {
         }
     }
     private Operacao tipo;
-    private Date data;
+    private String data;
     private String descricao;
     private int quantidade;
     private int idProduto;
@@ -36,7 +38,7 @@ public class ProdutoMovimento {
         this.tipo = tipo;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
@@ -44,10 +46,15 @@ public class ProdutoMovimento {
         return tipo;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 
+    public void setData(Date data) {
+        DateFormat formatoData = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        this.data = formatoData.format(data);
+    }
+    
     public String getDescricao() {
         return descricao;
     }
