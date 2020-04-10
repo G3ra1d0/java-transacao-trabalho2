@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `java-transacao-trabalho2` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
-USE `java-transacao-trabalho2`;
 -- MySQL dump 10.13  Distrib 5.7.29, for Linux (x86_64)
 --
 -- Host: localhost    Database: java-transacao-trabalho2
@@ -18,23 +16,13 @@ USE `java-transacao-trabalho2`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `vendedor_comissao`
+-- Dumping data for table `vendedor_comissao`
 --
 
-DROP TABLE IF EXISTS `vendedor_comissao`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `vendedor_comissao` (
-  `id_vendcom` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `porcentualcomissao_vendcom` decimal(3,2) NOT NULL,
-  `valorcomissao_vendcom` decimal(18,2) NOT NULL,
-  `codvend_vendcom` int(10) unsigned NOT NULL,
-  `codpedido_vendcom` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`id_vendcom`),
-  KEY `codpedido_vendcom` (`codpedido_vendcom`),
-  CONSTRAINT `vendedor_comissao_ibfk_1` FOREIGN KEY (`codpedido_vendcom`) REFERENCES `pedido` (`codigo_ped`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `vendedor_comissao` WRITE;
+/*!40000 ALTER TABLE `vendedor_comissao` DISABLE KEYS */;
+/*!40000 ALTER TABLE `vendedor_comissao` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -45,4 +33,4 @@ CREATE TABLE `vendedor_comissao` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-08 20:32:51
+-- Dump completed on 2020-04-09 23:18:44

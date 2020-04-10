@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `java-transacao-trabalho2` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
-USE `java-transacao-trabalho2`;
 -- MySQL dump 10.13  Distrib 5.7.29, for Linux (x86_64)
 --
 -- Host: localhost    Database: java-transacao-trabalho2
@@ -18,24 +16,13 @@ USE `java-transacao-trabalho2`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `produto_movimento`
+-- Dumping data for table `produto_movimento`
 --
 
-DROP TABLE IF EXISTS `produto_movimento`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `produto_movimento` (
-  `id_prodmov` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `tipo_prodmov` varchar(1) NOT NULL,
-  `data_prodmov` datetime NOT NULL,
-  `descricao_prodmov` varchar(45) DEFAULT NULL,
-  `codproduto_prodmov` int(10) unsigned NOT NULL,
-  `quantidade_prodmov` int(11) NOT NULL,
-  PRIMARY KEY (`id_prodmov`),
-  KEY `codproduto_prodmov` (`codproduto_prodmov`),
-  CONSTRAINT `produto_movimento_ibfk_1` FOREIGN KEY (`codproduto_prodmov`) REFERENCES `produto` (`codigo_prod`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `produto_movimento` WRITE;
+/*!40000 ALTER TABLE `produto_movimento` DISABLE KEYS */;
+/*!40000 ALTER TABLE `produto_movimento` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -46,4 +33,4 @@ CREATE TABLE `produto_movimento` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-08 20:32:51
+-- Dump completed on 2020-04-09 23:18:44

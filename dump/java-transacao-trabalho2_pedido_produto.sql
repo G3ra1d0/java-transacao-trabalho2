@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `java-transacao-trabalho2` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
-USE `java-transacao-trabalho2`;
 -- MySQL dump 10.13  Distrib 5.7.29, for Linux (x86_64)
 --
 -- Host: localhost    Database: java-transacao-trabalho2
@@ -18,26 +16,13 @@ USE `java-transacao-trabalho2`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `pedido_produto`
+-- Dumping data for table `pedido_produto`
 --
 
-DROP TABLE IF EXISTS `pedido_produto`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `pedido_produto` (
-  `id_pedprod` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `quantidade_pedprod` decimal(18,2) NOT NULL,
-  `valor_pedprod` decimal(18,2) NOT NULL,
-  `valortotal_pedprod` decimal(18,2) NOT NULL,
-  `codproduto_pedprod` int(10) unsigned NOT NULL,
-  `codpedido_pedprod` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`id_pedprod`),
-  KEY `codproduto_pedprod` (`codproduto_pedprod`),
-  KEY `codpedido_pedprod` (`codpedido_pedprod`),
-  CONSTRAINT `pedido_produto_ibfk_1` FOREIGN KEY (`codproduto_pedprod`) REFERENCES `produto` (`codigo_prod`),
-  CONSTRAINT `pedido_produto_ibfk_2` FOREIGN KEY (`codpedido_pedprod`) REFERENCES `pedido` (`codigo_ped`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `pedido_produto` WRITE;
+/*!40000 ALTER TABLE `pedido_produto` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pedido_produto` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -48,4 +33,4 @@ CREATE TABLE `pedido_produto` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-08 20:32:51
+-- Dump completed on 2020-04-09 23:18:44

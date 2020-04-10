@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `java-transacao-trabalho2` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
-USE `java-transacao-trabalho2`;
 -- MySQL dump 10.13  Distrib 5.7.29, for Linux (x86_64)
 --
 -- Host: localhost    Database: java-transacao-trabalho2
@@ -18,20 +16,13 @@ USE `java-transacao-trabalho2`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `produto`
+-- Dumping data for table `produto`
 --
 
-DROP TABLE IF EXISTS `produto`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `produto` (
-  `codigo_prod` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `descricao_prod` varchar(45) NOT NULL,
-  `saldo_prod` decimal(12,2) NOT NULL,
-  `unidade_prod` varchar(2) NOT NULL,
-  PRIMARY KEY (`codigo_prod`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `produto` WRITE;
+/*!40000 ALTER TABLE `produto` DISABLE KEYS */;
+/*!40000 ALTER TABLE `produto` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -42,4 +33,4 @@ CREATE TABLE `produto` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-08 20:32:51
+-- Dump completed on 2020-04-09 23:18:44
