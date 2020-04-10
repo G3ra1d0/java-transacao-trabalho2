@@ -56,6 +56,10 @@ public class PedidoProduto {
         this.idProduto = idProduto;
     }
 
+    public void calcValorTotal() {
+        this.valorTotal = this.quantidade * this.valorUni;
+    }
+
     @Override
     public String toString() {
         return "PedidoProduto [id=" + id + ", idPedido=" + idPedido + ", idProduto=" + idProduto + ", quantidade="
