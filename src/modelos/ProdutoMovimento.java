@@ -4,7 +4,21 @@ import java.util.Date;
 
 public class ProdutoMovimento {
     private int id;
-    private char tipo;
+    public enum Operacao {
+        E("Entrada"),
+        S("Saída");
+     
+        private String descricao;
+     
+        Operacao(String descricao) {
+            this.descricao = descricao;
+        }
+     
+        public String getDescricao() {
+            return descricao;
+        }
+    }
+    private Operacao tipo;
     private Date data;
     private String descricao;
     private int quantidade;
@@ -18,16 +32,16 @@ public class ProdutoMovimento {
         this.id = id;
     }
 
-    public char getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(char tipo) {
+    public void setTipo(Operacao tipo) {
         this.tipo = tipo;
     }
 
     public Date getData() {
         return data;
+    }
+
+    public Operacao getTipo() {
+        return tipo;
     }
 
     public void setData(Date data) {
