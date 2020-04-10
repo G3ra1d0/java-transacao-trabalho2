@@ -1,10 +1,12 @@
 package modelos;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Pedido {
     private int id;
-    private Date data;
+    private String data;
     private String observacao;
     private int idCliente;
     private int idVendedor;
@@ -17,11 +19,16 @@ public class Pedido {
         this.id = id;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
     public void setData(Date data) {
+        DateFormat formatoData = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        this.data = formatoData.format(data);
+    }
+
+    public void setUltimaCompra(String data) {
         this.data = data;
     }
 
