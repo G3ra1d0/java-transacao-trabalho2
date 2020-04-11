@@ -5,6 +5,8 @@ public class Produto {
     private String descricao;
     private Double saldo;
     private String unidade;
+    private Double quantidade;
+    private Double preco;
 
     public int getId() {
         return id;
@@ -36,6 +38,26 @@ public class Produto {
 
     public void setUnidade(String unidade) {
         this.unidade = unidade;
+    }
+
+    public Double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(Double preco) {
+        this.preco = preco;
+    }
+    
+    public Double getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Double quantidade) {
+        if(quantidade > this.saldo) {
+            throw new RuntimeException("O saldo de produtos é menor que a quantidade solicitada");
+        }
+        this.saldo = this.saldo - quantidade;
+        this.quantidade = quantidade;
     }
 
     @Override

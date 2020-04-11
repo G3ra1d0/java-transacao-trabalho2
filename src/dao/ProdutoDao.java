@@ -39,8 +39,8 @@ public class ProdutoDao {
     }
 
     public void inserir(Produto Produto) {
-        String sql = "insert into produto( descricao_prod, saldo_prod, unidade_prod )"
-                     + " values (?, ?, ?)";
+        String sql = "insert into produto( descricao_prod, saldo_prod, unidade_prod, preco_prod )"
+                     + " values (?, ?, ?, ?)";
 
         try {
             PreparedStatement pst = this.connection.prepareStatement(sql);
@@ -48,6 +48,7 @@ public class ProdutoDao {
             pst.setString(1, Produto.getDescricao());
             pst.setDouble(2, Produto.getSaldo());
             pst.setString(3, Produto.getUnidade());
+            pst.setDouble(4, Produto.getPreco());
 
             pst.execute();
 
@@ -57,7 +58,7 @@ public class ProdutoDao {
     }
 
     public void update(Produto Produto) {
-        String sql = "update produto set descricao_prod = ?, saldo_prod = ?, unidade_prod = ?"
+        String sql = "update produto set descricao_prod = ?, saldo_prod = ?, unidade_prod = ?, preco_prod = ?"
                      + " where codigo_prod = ?";
 
         try {
@@ -66,7 +67,8 @@ public class ProdutoDao {
             pst.setString(1, Produto.getDescricao());
             pst.setDouble(2, Produto.getSaldo());
             pst.setString(3, Produto.getUnidade());
-            pst.setInt(4, Produto.getId());
+            pst.setDouble(4, Produto.getPreco());
+            pst.setInt(5, Produto.getId());
 
             pst.executeUpdate();
         } catch (SQLException e) {
@@ -105,6 +107,7 @@ public class ProdutoDao {
                 Produto.setDescricao(Resultado.getString("descricao_prod"));
                 Produto.setSaldo(Resultado.getDouble("saldo_prod"));
                 Produto.setUnidade(Resultado.getString("unidade_prod"));
+                Produto.setPreco(Resultado.getDouble("preco_prod"));
             }
         } catch (SQLException e) {
             System.err.println("Erro ao buscar o objeto " + id  + " : " + e.getMessage());
@@ -132,6 +135,7 @@ public class ProdutoDao {
                     Produto.setDescricao(Resultado.getString("descricao_prod"));
                     Produto.setSaldo(Resultado.getDouble("saldo_prod"));
                     Produto.setUnidade(Resultado.getString("unidade_prod"));
+                    Produto.setPreco(Resultado.getDouble("preco_prod"));
 
                     Produtos.add(Produto);
                 
