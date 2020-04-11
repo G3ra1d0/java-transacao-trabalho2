@@ -176,4 +176,16 @@ public class PedidoDao {
             System.err.println("Erro ao utilizar o método salvar : " + e.getMessage());
         }
     }
+
+    public void excluirPedido (Pedido pedido){
+        try {
+            FabricaConexaoTransacional fabricaConexaoTransacional = new FabricaConexaoTransacional();
+
+            Connection conexao = fabricaConexaoTransacional.getConnection(this.nivelIsolamento);
+
+            PedidoFachada.excluirPedido(pedido, conexao);
+        } catch (Exception e) {
+            System.err.println("Erro ao utilizar o método excluir : " + e.getMessage());
+        }
+    }
 }

@@ -83,4 +83,51 @@ public class PedidoFachada {
                                         + "\nError: " + e.getMessage());
         }
     }
+
+    public static void excluirPedido (Pedido pedido, Connection conexao){
+        try {
+            VendedorComissaoDao vendedorComissaoDao = new VendedorComissaoDao(conexao);
+            vendedorComissaoDao.selectAll()
+                               .forEach(vc -> {
+                                    vendedorComissaoDao.delete(vc);
+                               });
+
+            PedidoProdutoDao pedidoProdutoDao = new PedidoProdutoDao(conexao);
+
+            ProdutoMovimentoDao produtoMovimentoDao = new ProdutoMovimentoDao(conexao);
+
+            ProdutoDao produtoDao = new ProdutoDao(conexao);
+
+            pedidoProdutoDao.selectAll()
+                            .forEach(pp -> {
+                                if(pp.getIdPedido() == pedido.getId()) {
+                                    Produto produto = new Produto();
+                                    produto = produtoDao.select(pp.getIdProduto()).get();
+                                    produto.setSaldo(produto.getSaldo() + pp.getQuantidade());
+                                    produtoDao.update(produto);
+
+                                    ProdutoMovimento produtoMovimento = new ProdutoMovimento();
+                                    produtoMovimento.setIdProduto(produto.getId());
+                                    produtoMovimento.setQuantidade(pp.getQuantidade());
+                                    produtoMovimento.setData(new Date());
+                                    produtoMovimento.setDescricao(ProdutoMovimento.Operacao.E.getDescricao());
+                                    produtoMovimento.setTipo(ProdutoMovimento.Operacao.E);
+                                    produtoMovimentoDao.inserir(produtoMovimento);
+
+                                    pedidoProdutoDao.delete(pp);
+                                }    
+                            });
+
+            PedidoDao pedidoDao = new PedidoDao(conexao);
+            pedidoDao.delete(pedido);
+
+            FabricaConexaoTransacional.commitTransacao(conexao);                   
+        }catch (Exception e) {
+            FabricaConexaoTransacional.rollbackTransacao(conexao);
+            FabricaConexaoTransacional.closeConnection(conexao);
+            throw new RuntimeException("Não foi possível efetuar a operacao de "
+                                        + "excluir"
+                                        + "\nError: " + e.getMessage());
+        }
+    }
 }
