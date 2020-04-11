@@ -5,13 +5,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Optional;
 
 import conexao.FabricaConexaoSingleton;
 import conexao.FabricaConexaoTransacional;
+import dao.fachadas.PedidoFachada;
 import modelos.Pedido;
+import modelos.Produto;
 
 public class PedidoDao {
     private Connection connection;
@@ -38,12 +41,14 @@ public class PedidoDao {
         this.connection = conexao;
     }
 
-    public void inserir(Pedido Pedido) {
+    public Optional<Integer> inserir(Pedido Pedido) {
+        Integer id = null;
+
         String sql = "insert into pedido( data_ped, obs_ped, codcliente_ped, codvendedor_ped )"
                      + " values (?, ?, ?, ?)";
 
         try {
-            PreparedStatement pst = this.connection.prepareStatement(sql);
+            PreparedStatement pst = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             pst.setString(1, Pedido.getData());
             pst.setString(2, Pedido.getObservacao());
@@ -52,9 +57,16 @@ public class PedidoDao {
 
             pst.execute();
 
+            ResultSet rs = pst.getGeneratedKeys();
+
+            if(rs.next()){
+                id = rs.getInt(1);
+            }	
+
         } catch (SQLException e) {
             System.err.println("Erro ao salvar o objeto: " + e.getMessage());
         }
+        return Optional.ofNullable(id);
     }
 
     public void update(Pedido Pedido) {
@@ -145,5 +157,23 @@ public class PedidoDao {
             System.err.println("Erro ao buscar os objetos : " + e.getMessage());
         }
         return Pedidos;
+    }
+    /* 
+        Atenção:
+        Os métodos abaixo utilizam uma nova conexão, isolada da conexão principal da classe
+        (this.connection).
+        Por que disso? Os métodos abaixo utilizam uma conexão Transacional, então iremos
+        evitar possíveis conflitos com instâncias da classe que estejam operando no formato Singleton.
+    */
+    public void salvarPedido (Pedido pedido, Collection<Produto> produtos){
+        try {
+            FabricaConexaoTransacional fabricaConexaoTransacional = new FabricaConexaoTransacional();
+
+            Connection conexao = fabricaConexaoTransacional.getConnection(this.nivelIsolamento);
+
+            PedidoFachada.salvarPedido(pedido, produtos, conexao);
+        } catch (Exception e) {
+            System.err.println("Erro ao utilizar o método salvar : " + e.getMessage());
+        }
     }
 }
