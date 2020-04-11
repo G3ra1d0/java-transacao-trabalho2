@@ -49,7 +49,7 @@ public class ProdutoMovimentoDao {
             pst.setString(2, produtoMovimento.getData());
             pst.setString(3, produtoMovimento.getDescricao());
             pst.setInt(4, produtoMovimento.getIdProduto());
-            pst.setInt(5, produtoMovimento.getQuantidade());
+            pst.setDouble(5, produtoMovimento.getQuantidade());
 
             pst.execute();
 
@@ -69,7 +69,7 @@ public class ProdutoMovimentoDao {
             pst.setString(2, produtoMovimento.getData());
             pst.setString(3, produtoMovimento.getDescricao());
             pst.setInt(4, produtoMovimento.getIdProduto());
-            pst.setInt(5, produtoMovimento.getQuantidade());
+            pst.setDouble(5, produtoMovimento.getQuantidade());
             pst.setInt(6, produtoMovimento.getId());
 
             pst.executeUpdate();
@@ -110,7 +110,7 @@ public class ProdutoMovimentoDao {
                 produtoMovimento.setData(Resultado.getString("data_prodmov"));
                 produtoMovimento.setDescricao(Resultado.getString("descricao_prodmov"));
                 produtoMovimento.setIdProduto(Resultado.getInt("codproduto_prodmov"));
-                produtoMovimento.setQuantidade(Resultado.getInt("quantidade_prodmov"));
+                produtoMovimento.setQuantidade(Resultado.getDouble("quantidade_prodmov"));
             }
         } catch (SQLException e) {
             System.err.println("Erro ao buscar o objeto " + id  + " : " + e.getMessage());
@@ -139,7 +139,7 @@ public class ProdutoMovimentoDao {
                     produtoMovimento.setData(Resultado.getString("data_prodmov"));
                     produtoMovimento.setDescricao(Resultado.getString("descricao_prodmov"));
                     produtoMovimento.setIdProduto(Resultado.getInt("codproduto_prodmov"));
-                    produtoMovimento.setQuantidade(Resultado.getInt("quantidade_prodmov"));
+                    produtoMovimento.setQuantidade(Resultado.getDouble("quantidade_prodmov"));
 
                     ProdutoMovimentos.add(produtoMovimento);
                 

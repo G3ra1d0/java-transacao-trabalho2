@@ -23,7 +23,7 @@ public class ProdutoMovimento {
     private Operacao tipo;
     private String data;
     private String descricao;
-    private int quantidade;
+    private Double quantidade;
     private int idProduto;
 
     public int getId() {
@@ -63,11 +63,11 @@ public class ProdutoMovimento {
         this.descricao = descricao;
     }
 
-    public int getQuantidade() {
+    public Double getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(Double quantidade) {
         this.quantidade = quantidade;
     }
 
