@@ -15,17 +15,18 @@ public class TesteProdutoDao {
 
         //INSERCAO
         Produto.setDescricao("Feijao");
-        Produto.setSaldo(2.5);
+        Produto.setSaldo(1.0);
         Produto.setUnidade("Kg");
+        Produto.setPreco(1.0);
 
         ProdutoDao.inserir(Produto);
 
         //UPDATE
-        /*Optional<Produto> ProdutoOpt = ProdutoDao.select(2);
+        /*Optional<Produto> ProdutoOpt = ProdutoDao.select(3);
         
         if(ProdutoOpt.isPresent()) {
             Produto = ProdutoOpt.get();
-            Produto.setSaldo(5.5);
+            Produto.setSaldo(10.5);
             ProdutoDao.update(Produto);
         }*/
 
