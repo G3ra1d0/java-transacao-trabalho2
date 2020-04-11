@@ -3,6 +3,11 @@ package modelos;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import dao.ClienteDao;
+import dao.VendedorDao;
 
 public class Pedido {
     private int id;
@@ -54,6 +59,26 @@ public class Pedido {
 
     public void setIdVendedor(int idVendedor) {
         this.idVendedor = idVendedor;
+    }
+
+    public Map<String,String> toMap() {
+        ClienteDao clienteDao = new ClienteDao();
+
+        VendedorDao vendedorDao = new VendedorDao();
+
+        Map<String, String> pedidoMap = new HashMap<>();
+        
+        pedidoMap.put("id", Integer.toString(this.id));
+        pedidoMap.put("data", this.data);
+        pedidoMap.put("observacao", this.observacao);
+        pedidoMap.put("cliente", clienteDao.select(this.idCliente)
+                                           .get()
+                                           .getNome());
+        pedidoMap.put("vendedor", vendedorDao.select(this.idVendedor)
+                                             .get()
+                                             .getNome());
+
+        return pedidoMap;
     }
 
     @Override
