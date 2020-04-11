@@ -1,4 +1,4 @@
-package visoes;
+package testes;
 
 import java.util.Collection;
 import java.util.Date;
@@ -27,14 +27,14 @@ public class VisaoInseriPedido {
             Vendedor vendedor = optVendedor.get();
 
             Pedido pedido = new Pedido();
-            pedido.setObservacao("Meu primeiro teste simulando uma view");
+            pedido.setObservacao("Meu segundo teste simulando uma view");
             pedido.setData(new Date());
             pedido.setIdCliente(cliente.getId());
             pedido.setIdVendedor(vendedor.getId());
 
             ProdutoDao produtoDao = new ProdutoDao();
             Collection<Produto> produtos = produtoDao.selectAll();
-            produtos.forEach(p -> p.setQuantidade(1.0));
+            produtos.forEach(p -> p.setQuantidade(0.1));
 
             PedidoControle.salvarPedido(pedido, produtos);
         }

@@ -1,4 +1,4 @@
-package visoes;
+package testes;
 
 import dao.PedidoDao;
 
