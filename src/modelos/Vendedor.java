@@ -3,26 +3,8 @@ package modelos;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Vendedor {
-    private int id;
-    private String nome;
+public class Vendedor extends Pessoa {
     private Double percentualComissao;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
 
     public Double getPercentualComissao() {
         return percentualComissao;
@@ -35,8 +17,8 @@ public class Vendedor {
     public Map<String,String> toMap() {
         Map<String, String> vendedorMap = new HashMap<>();
         
-        vendedorMap.put("id", Integer.toString(this.id));
-        vendedorMap.put("nome", this.nome);
+        vendedorMap.put("id", Integer.toString(super.getId()));
+        vendedorMap.put("nome", super.getNome());
         vendedorMap.put("percentual", Double.toString(this.percentualComissao));
 
         return vendedorMap;
@@ -44,7 +26,7 @@ public class Vendedor {
 
     @Override
     public String toString() {
-        return "Vendedor [id=" + id + ", nome=" + nome + ", percentualComissao=" + percentualComissao + "]";
+        return "Vendedor [id=" + super.getId() + ", nome=" + super.getNome() + ", percentualComissao=" + percentualComissao + "]";
     }
     
 }

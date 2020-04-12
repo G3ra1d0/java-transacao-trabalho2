@@ -6,27 +6,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Cliente {
-    private int id;
-    private String nome;
+public class Cliente extends Pessoa{
     private String cpf;
     private String ultimaCompra;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
 
     public String getCpf() {
         return cpf;
@@ -52,8 +34,8 @@ public class Cliente {
     public Map<String,String> toMap() {
         Map<String, String> clienteMap = new HashMap<>();
         
-        clienteMap.put("id", Integer.toString(this.id));
-        clienteMap.put("nome", this.nome);
+        clienteMap.put("id", Integer.toString(super.getId()));
+        clienteMap.put("nome", super.getNome());
         clienteMap.put("cpf", this.cpf);
         clienteMap.put("ultimacompra", this.ultimaCompra);
 
@@ -62,7 +44,7 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		return "Cliente [cpf=" + cpf + ", id=" + id + ", nome=" + nome + ", ultimaCompra=" + ultimaCompra + "]";
+		return "Cliente [cpf=" + cpf + ", id=" + super.getId() + ", nome=" + super.getNome() + ", ultimaCompra=" + ultimaCompra + "]";
 	}
     
 }
