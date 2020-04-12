@@ -36,7 +36,7 @@ public class VisaoInseriPedido {
             Collection<Produto> produtos = produtoDao.selectAll();
             produtos.forEach(p -> p.setQuantidade(0.1));
 
-            PedidoControle.salvarPedido(pedido, produtos);
+            //PedidoControle.salvarPedido(pedido, produtos);
         }
     }
 }
