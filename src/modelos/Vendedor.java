@@ -1,5 +1,8 @@
 package modelos;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Vendedor {
     private int id;
     private String nome;
@@ -27,6 +30,16 @@ public class Vendedor {
 
     public void setPercentualComissao(Double percentualComissao) {
         this.percentualComissao = percentualComissao;
+    }
+
+    public Map<String,String> toMap() {
+        Map<String, String> vendedorMap = new HashMap<>();
+        
+        vendedorMap.put("id", Integer.toString(this.id));
+        vendedorMap.put("nome", this.nome);
+        vendedorMap.put("percentual", Double.toString(this.percentualComissao));
+
+        return vendedorMap;
     }
 
     @Override

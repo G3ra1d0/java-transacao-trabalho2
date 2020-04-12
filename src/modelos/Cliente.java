@@ -3,6 +3,8 @@ package modelos;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Cliente {
     private int id;
@@ -45,6 +47,17 @@ public class Cliente {
 
     public void setUltimaCompra(String ultimaCompra) {
         this.ultimaCompra = ultimaCompra;
+    }
+
+    public Map<String,String> toMap() {
+        Map<String, String> clienteMap = new HashMap<>();
+        
+        clienteMap.put("id", Integer.toString(this.id));
+        clienteMap.put("nome", this.nome);
+        clienteMap.put("cpf", this.cpf);
+        clienteMap.put("ultimacompra", this.ultimaCompra);
+
+        return clienteMap;
     }
 
 	@Override

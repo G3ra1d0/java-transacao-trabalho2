@@ -1,5 +1,8 @@
 package modelos;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Produto {
     private int id;
     private String descricao;
@@ -58,6 +61,18 @@ public class Produto {
         }
         this.saldo = this.saldo - quantidade;
         this.quantidade = quantidade;
+    }
+
+    public Map<String,String> toMap() {
+        Map<String, String> produtoMap = new HashMap<>();
+
+        produtoMap.put("id", Integer.toString(this.id));
+        produtoMap.put("descricao", this.descricao);
+        produtoMap.put("saldo", Double.toString(this.saldo));
+        produtoMap.put("unidade", this.unidade);
+        produtoMap.put("preco", Double.toString(this.preco));
+
+        return produtoMap;
     }
 
     @Override
