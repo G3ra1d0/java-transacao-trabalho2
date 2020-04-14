@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Optional;
@@ -38,12 +39,14 @@ public class ProdutoDao {
         this.connection = conexao;
     }
 
-    public void inserir(Produto Produto) {
+    public Optional<Integer> inserir(Produto Produto) {
+        Integer id = null;
+
         String sql = "insert into produto( descricao_prod, saldo_prod, unidade_prod, preco_prod )"
                      + " values (?, ?, ?, ?)";
 
         try {
-            PreparedStatement pst = this.connection.prepareStatement(sql);
+            PreparedStatement pst = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             pst.setString(1, Produto.getDescricao());
             pst.setDouble(2, Produto.getSaldo());
@@ -52,9 +55,17 @@ public class ProdutoDao {
 
             pst.execute();
 
+            ResultSet rs = pst.getGeneratedKeys();
+
+            if(rs.next()){
+                id = rs.getInt(1);
+            }
+
         } catch (SQLException e) {
             System.err.println("Erro ao salvar o objeto: " + e.getMessage());
         }
+
+        return Optional.ofNullable(id);
     }
 
     public void update(Produto Produto) {
